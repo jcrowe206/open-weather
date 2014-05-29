@@ -1,6 +1,7 @@
 {
     "name": "j-crowe/open-weather",
-    "description": "",
+    "license": "MIT",
+    "description": "A very simple wrapper for Open Weather",
     "authors": [
         {
             "name": "Jonathan Crowe",
