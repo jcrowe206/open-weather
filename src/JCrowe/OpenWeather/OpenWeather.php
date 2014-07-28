@@ -73,12 +73,12 @@ class OpenWeather {
         return new OpenWeatherResponse($response, $code, $info, $error);
     }
 
-    public function getWeather($lat, $long, $unit, $count) {
+    private function getWeather($lat, $long, $unit, $count) {
         return $this->_call('get_weather', array('lat' => $lat, 'lon' => $long, 'units' => $unit, 'cnt' => $count));
     }
 
     public static function get($lat, $long, $unit = 'imperial', $count = 1) {
-        $ow = new OpenWeather();
+        $ow = new self();
         return $ow->getWeather($lat, $long, $unit, $count);
     }
 
