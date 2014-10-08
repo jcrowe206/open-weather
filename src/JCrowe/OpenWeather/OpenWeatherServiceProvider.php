@@ -9,7 +9,7 @@ class OpenWeatherServiceProvider extends ServiceProvider {
 	 *
 	 * @var bool
 	 */
-	protected $defer = false;
+	protected $defer = true;
 
 	/**
 	 * Bootstrap the application events.
@@ -18,7 +18,9 @@ class OpenWeatherServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('j-crowe/open-weather');
+        $namespace = 'open-weather';
+        $path = __DIR__ . '/../../..';
+		$this->package('j-crowe/open-weather', $namespace, $path);
 	}
 
 	/**
@@ -28,15 +30,8 @@ class OpenWeatherServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
-        $this->app['OpenWeather'] = $this->app->share(function($app) {
-            return new OpenWeather;
-        });
-
-        $this->app->booting(function()
-        {
-            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-            $loader->alias('OpenWeather', 'JCrowe\OpenWeather\Facades\OpenWeather');
+        $this->app->bind('OpenWeather', function($app) {
+            return new OpenWeather($app);
         });
 	}
 
