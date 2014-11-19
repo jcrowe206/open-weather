@@ -3,13 +3,15 @@
 return array(
 
     /**
-     * Configs for timeouts on the cURL request
-     * connect_timeout refers to CURLOPT_CONNECTTIMEOUT
-     * request_timeout refers to CURLOPT_TIMEOUT
+     * Options for GuzzleClient
+     * @see http://guzzle.readthedocs.org/en/latest/clients.html#request-options
+     * Note: exact names required here
      */
-    'curl' => array(
-        'connect_timeout' => 30,
-        'request_timeout' => 30
+    'options' => array(
+        'timeout' => 3,
+        'connect_timeout' => 3
     ),
+
+    'base_url' => 'http://api.openweathermap.org/data/2.5',
 
 );
