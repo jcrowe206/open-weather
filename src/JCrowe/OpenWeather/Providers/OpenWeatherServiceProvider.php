@@ -1,6 +1,7 @@
-<?php namespace JCrowe\OpenWeather;
+<?php namespace JCrowe\OpenWeather\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use JCrowe\OpenWeather\OpenWeather;
 
 class OpenWeatherServiceProvider extends ServiceProvider {
 
@@ -30,7 +31,7 @@ class OpenWeatherServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->bind('OpenWeather', function($app) {
+        $this->app->bind('open-weather', function($app) {
             $config = $app->make('config');
             /** @var array $defaults */
             $defaults = $config->get('open-weather::options');
@@ -47,7 +48,7 @@ class OpenWeatherServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array('OpenWeather');
+        return array('open-weather');
     }
 
 }
