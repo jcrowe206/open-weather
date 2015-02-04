@@ -18,20 +18,21 @@ class Requester {
 
     public function makeRequest($queryParams)
     {
+        $url = (isset($queryParams['cnt']) && $queryParams['cnt'] > 1) ? 'data/2.5/forecast/daily' : '/data/2.5/weather';
+
         $opts = array(
             'query' => $queryParams
         );
 
-        return $this->call($opts);
+        return $this->call($opts, $url);
     }
 
-    public function call(array $opts)
+    public function call(array $opts, $url)
     {
         /** @var ResponseInterface $response */
         /** @noinspection PhpVoidFunctionResultUsedInspection */
-        $response = $this->client->get('/data/2.5/weather', $opts);
+        $response = $this->client->get($url, $opts);
 
         return new Response($response);
     }
-
 }
