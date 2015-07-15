@@ -8,11 +8,19 @@ class Response {
     /** @var  ResponseInterface */
     protected $response;
 
+    /**
+     * @param ResponseInterface $response
+     */
     public function __construct(ResponseInterface $response)
     {
         $this->response = $response;
     }
 
+    /**
+     * Parse out weather data from the response body
+     *
+     * @return array
+     */
     public function getWeatherData()
     {
         try {
@@ -27,11 +35,21 @@ class Response {
         return array();
     }
 
+
+    /**
+     * get the raw response body as json
+     *
+     * @return mixed
+     */
     public function getBody()
     {
         return $this->response->json();
     }
 
+
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return $this->response->getStatusCode() == 200;

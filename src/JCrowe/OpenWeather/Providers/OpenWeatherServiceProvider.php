@@ -3,6 +3,10 @@
 use Illuminate\Support\ServiceProvider;
 use JCrowe\OpenWeather\OpenWeather;
 
+/**
+ * Class OpenWeatherServiceProvider
+ * @package JCrowe\OpenWeather\Providers
+ */
 class OpenWeatherServiceProvider extends ServiceProvider {
 
     /**

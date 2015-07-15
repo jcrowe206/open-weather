@@ -2,22 +2,43 @@
 
 use GuzzleHttp\Exception\RequestException;
 
+
+/**
+ * Class OpenWeather
+ * @package JCrowe\OpenWeather
+ */
 class OpenWeather {
 
     /** @var  Requester */
     protected $requester;
 
+    /**
+     * API Endpoints
+     *
+     * @var array
+     */
     private $API = array(
         'endpoints' => array(
             'get_weather' => array('uri' => 'weather', 'method' => 'GET'),
         ),
     );
 
+    /**
+     * @param Requester $requester
+     */
     public function __construct(Requester $requester)
     {
         $this->requester = $requester;
     }
 
+
+    /**
+     * Create an instance of the openweather object.
+     *
+     * @param $guzzleOpts
+     * @param $baseUrl
+     * @return OpenWeather
+     */
     public static function getInstance($guzzleOpts, $baseUrl)
     {
         $clientFactory = new ClientFactory($baseUrl, $guzzleOpts);
@@ -27,6 +48,8 @@ class OpenWeather {
     }
 
     /**
+     * Get weather report for the provided $lat and $lng
+     *
      * @param $lat
      * @param $long
      * @param string $unit
@@ -47,6 +70,8 @@ class OpenWeather {
     }
 
     /**
+     * Get weather report for the provided $city name
+     *
      * @param $city
      * @param string $country
      * @param string $unit
