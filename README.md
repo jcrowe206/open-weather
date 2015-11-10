@@ -15,9 +15,15 @@ Install using composer:
     
 ## Configuration
 
-There are 2 required configurations - the Base URL and Default Guzzle Options.
+There are 3 required configurations:
 
-Please see (here)[http://guzzle.readthedocs.org/en/latest/clients.html#request-options] for possible options
+First, the app_id - an environment variable named 'OPENWEATHER_APPID' that must be set in your application
+
+Please see (here)[http://openweathermap.org/appid] to get one
+
+The other two - the Base URL and Default Guzzle Options.
+
+Please see (here)[http://docs.guzzlephp.org/en/5.3/clients.html#request-options] for possible options
     
 ## Usage Without Laravel
 
@@ -33,8 +39,9 @@ See below for sample initialization code:
         'timeout' => 3,
         'connect_timeout' => 3
     );
+    $appId = 'abcdefghijklmnop1234567890';
     
-    $openWeather = OpenWeather::getInstance($guzzleOpts, $baseUrl);
+    $openWeather = OpenWeather::getInstance($guzzleOpts, $baseUrl, $appId);
     
     $response = $openWeather->getByCityName('los angeles');
     

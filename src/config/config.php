@@ -14,4 +14,5 @@ return array(
     // By default using the openweather v2.5
     'base_url' => 'http://api.openweathermap.org/data/2.5',
 
+    'app_id' =>  getenv('OPENWEATHER_APPID'),
 );
