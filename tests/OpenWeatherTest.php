@@ -19,6 +19,8 @@ class OpenWeatherTest extends PHPUnit_Framework_TestCase {
         'connect_timeout' => 3
     );
 
+    protected $appId = 'testOpenWeatherAppId';
+
     public function setUp()
     {
         $this->mockRequester = m::mock('JCrowe\OpenWeather\Requester');
@@ -28,7 +30,7 @@ class OpenWeatherTest extends PHPUnit_Framework_TestCase {
 
     public function testGetInstance()
     {
-        $openWeather = OpenWeather::getInstance($this->guzzleOpts, $this->baseUrl);
+        $openWeather = OpenWeather::getInstance($this->guzzleOpts, $this->baseUrl, $this->appId);
 
         $this->assertInstanceOf('JCrowe\OpenWeather\OpenWeather', $openWeather);
     }
@@ -68,10 +70,20 @@ class OpenWeatherTest extends PHPUnit_Framework_TestCase {
      */
     public function ActuallyTestWeather()
     {
-        $openWeather = OpenWeather::getInstance($this->guzzleOpts, $this->baseUrl);
+        $openWeather = OpenWeather::getInstance($this->guzzleOpts, $this->baseUrl, $this->appId);
 
         $response = $openWeather->getByCityName('los angeles');
         $this->assertTrue($response->isValid());
+    }
+
+
+    /**
+     * Here in case you want to actually test the Open Weather API
+     * @expectedException InvalidArgumentException
+     */
+    public function testWeatherNoAppId()
+    {
+        $openWeather = OpenWeather::getInstance($this->guzzleOpts, $this->baseUrl, null);
     }
 
 } 

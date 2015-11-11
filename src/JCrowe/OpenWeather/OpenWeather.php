@@ -26,7 +26,9 @@ class OpenWeather {
      *
      * @param $guzzleOpts
      * @param $baseUrl
+     * @param $appId
      * @return OpenWeather
+     * @throws InvalidArgumentException
      */
     public static function getInstance($guzzleOpts, $baseUrl, $appId)
     {
