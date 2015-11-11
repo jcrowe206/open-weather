@@ -40,8 +40,9 @@ class OpenWeatherServiceProvider extends ServiceProvider {
             /** @var array $defaults */
             $defaults = $config->get('open-weather::options');
             $baseUrl = $config->get('open-weather::base_url');
+            $appId = $config->get('open-weather::app_id');
 
-            return OpenWeather::getInstance($defaults, $baseUrl);
+            return OpenWeather::getInstance($defaults, $baseUrl, $appId);
         });
     }
 

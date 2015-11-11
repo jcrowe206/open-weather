@@ -13,17 +13,6 @@ class OpenWeather {
     protected $requester;
 
     /**
-     * API Endpoints
-     *
-     * @var array
-     */
-    private $API = array(
-        'endpoints' => array(
-            'get_weather' => array('uri' => 'weather', 'method' => 'GET'),
-        ),
-    );
-
-    /**
      * @param Requester $requester
      */
     public function __construct(Requester $requester)
@@ -39,10 +28,10 @@ class OpenWeather {
      * @param $baseUrl
      * @return OpenWeather
      */
-    public static function getInstance($guzzleOpts, $baseUrl)
+    public static function getInstance($guzzleOpts, $baseUrl, $appId)
     {
         $clientFactory = new ClientFactory($baseUrl, $guzzleOpts);
-        $requester = new Requester($clientFactory);
+        $requester = new Requester($clientFactory, $appId);
 
         return new OpenWeather($requester);
     }
