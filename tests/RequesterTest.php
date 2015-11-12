@@ -16,6 +16,8 @@ class RequesterTest extends PHPUnit_Framework_TestCase {
     /** @var  mock */
     protected $mockClient;
 
+    protected $appId = 'testOpenWeatherAppId';
+
     public function setUp()
     {
         $this->mockClient = m::mock('GuzzleHttp\Client');
@@ -24,7 +26,7 @@ class RequesterTest extends PHPUnit_Framework_TestCase {
         $this->mockClientFactory->shouldReceive('createClient')
             ->andReturn($this->mockClient);
 
-        $this->requester = new Requester($this->mockClientFactory);
+        $this->requester = new Requester($this->mockClientFactory, $this->appId);
     }
 
     public function tearDown()
@@ -40,26 +42,25 @@ class RequesterTest extends PHPUnit_Framework_TestCase {
             ->with('/data/2.5/weather', $testOpts)->once()
             ->andReturn($this->getMockResponseInterface());
 
-        $response = $this->requester->call($testOpts);
+        $response = $this->requester->call($testOpts, '/data/2.5/weather');
 
         $this->assertInstanceOf('JCrowe\OpenWeather\Response', $response);
     }
 
     public function testMakeRequest()
     {
-        $requester = m::mock('JCrowe\OpenWeather\Requester')->makePartial();
-
         $queryParams = array(
-            'key' => 'value'
+            'key' => 'value',
+            'APPID' => $this->appId,
         );
 
-        $mockResponse = new Response($this->getMockResponseInterface());
+        $testOpts = array('query' => $queryParams);
 
-        $requester->shouldReceive('call')->once()
-            ->with(array('query' => $queryParams))
-            ->andReturn($mockResponse);
+        $this->mockClient->shouldReceive('get')
+            ->with('/data/2.5/weather', $testOpts)->once()
+            ->andReturn($this->getMockResponseInterface());
 
-        $response = $requester->makeRequest($queryParams);
+        $response = $this->requester->makeRequest($queryParams);
 
         $this->assertInstanceOf('JCrowe\OpenWeather\Response', $response);
     }

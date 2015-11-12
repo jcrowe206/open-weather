@@ -25,6 +25,10 @@ class Requester {
      */
     public function __construct(ClientFactory $clientFactory, $appId)
     {
+        if (!$appId) {
+            throw new \InvalidArgumentException("OPENWEATHER_APPID environment variable not set.");
+        }
+
         $this->client = $clientFactory->createClient();
         $this->appId = $appId;
     }
