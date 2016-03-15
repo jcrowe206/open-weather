@@ -1,7 +1,7 @@
 OpenWeather PHP Wrapper
 =====
 
-[![Build Status](https://travis-ci.org/jcrowe206/open-weather.svg?branch=master)](https://travis-ci.org/jcrowe206/open-weather) [![Coverage Status](https://coveralls.io/repos/github/jcrowe206/open-weather/badge.svg?branch=master)](https://coveralls.io/github/jcrowe206/open-weather?branch=master)
+[![Build Status](https://travis-ci.org/jcrowe206/open-weather.svg?branch=master)](https://travis-ci.org/jcrowe206/open-weather)
 
 
 PHP Wrapper for the [Open Weather API](http://openweathermap.org/current)
