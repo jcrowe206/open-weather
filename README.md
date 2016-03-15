@@ -19,11 +19,11 @@ There are 3 required configurations:
 
 First, the app_id - an environment variable named 'OPENWEATHER_APPID' that must be set in your application
 
-Please see (here)[http://openweathermap.org/appid] to get one
+Please see [here](http://openweathermap.org/appid) to get one
 
 The other two - the Base URL and Default Guzzle Options.
 
-Please see (here)[http://docs.guzzlephp.org/en/5.3/clients.html#request-options] for possible options
+Please see [here](http://docs.guzzlephp.org/en/5.3/clients.html#request-options) for possible options
     
 ## Usage Without Laravel
 
