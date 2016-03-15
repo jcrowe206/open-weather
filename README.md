@@ -10,8 +10,12 @@ This library does not require Laravel; however, a Laravel Service Provider is in
 Install using composer:
     
     "require": {
-        "j-crowe/open-weather": "dev-master"
+        "j-crowe/open-weather": "1.2"
     }
+    
+or via CLI   
+
+    composer require j-crowe/open-weather 1.2
     
 ## Configuration
 
