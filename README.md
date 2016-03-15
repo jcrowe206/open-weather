@@ -33,6 +33,8 @@ See below for sample initialization code:
     
     include_once 'vendor/autoload.php';
     
+    use JCrowe\OpenWeather\OpenWeather;
+
     // Note the configs that are required. Guzzle Opts are default options for Guzzle
     $baseUrl = 'http://api.openweathermap.org';
     $guzzleOpts = array(
