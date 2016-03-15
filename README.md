@@ -1,6 +1,8 @@
 OpenWeather PHP Wrapper
 =====
 
+[![Build Status](https://travis-ci.org/jcrowe206/open-weather.svg?branch=master)](https://travis-ci.org/jcrowe206/open-weather) [![Coverage Status](https://coveralls.io/repos/jcrowe206/open-weather/badge.svg?branch=v2.0&service=github)](https://coveralls.io/github/jcrowe206/open-weather?branch=v2.0)
+
 PHP Wrapper for the [Open Weather API](http://openweathermap.org/current)
 
 This library does not require Laravel; however, a Laravel Service Provider is included.
